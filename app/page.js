@@ -2,7 +2,7 @@ import Image from "next/image";
 import './style.css'
 import logo from './assets/logo.png'
 import landing from './assets/landing.png'
-import Modal from './components/Modal/Modal'
+import ModalButton from "./components/ModalButton/ModalButton";
 
 export default function Home() {
   return (
@@ -13,7 +13,7 @@ export default function Home() {
             <img class="nav__img" src={logo} alt="logo" />
           </figure>
           <ul class="nav__list--wrapper">
-            <li class="nav__list nav__list--login">Login</li>
+            <ModalButton buttonName={"Login"} />
             <li class="nav__list nav__list--mobile">About</li>
             <li class="nav__list nav__list--mobile">Contact</li>
             <li class="nav__list nav__list--mobile">Help</li>
