@@ -3,8 +3,18 @@ import './style.css'
 import logo from './assets/logo.png'
 import landing from './assets/landing.png'
 import ModalButton from "./components/ModalButton/ModalButton";
+import { combineReducers, configureStore } from "@reduxjs/toolkit";
+import { viewModalSlice } from "./redux/features/viewModalSlice";
+import { store } from "./redux/store";
+import { Provider } from "react-redux";
 
 export default function Home() {
+
+  /*const rootReducer = combineReducers({
+    content: viewModalSlice.reducers
+  })
+  const reduxStore = configureStore();*/
+
   return (
     <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black relative">
       <nav class="nav">

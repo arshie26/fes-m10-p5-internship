@@ -4,8 +4,7 @@ import React from "react";
 import Modal from "../Modal/Modal";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { viewModalSlice } from "@/app/redux/viewModalSlice";
-import { activate } from "@/app/redux/viewModalSlice"
+import { activate } from "@/app/redux/features/viewModalSlice"
 
 function ModalButton(props){
 
@@ -14,7 +13,7 @@ function ModalButton(props){
 
     return (
         <div>
-            <button onClick={() => {dispatch(activate)}}>{props.buttonName}</button>
+            <button onClick={() => {console.log("Registering"); dispatch(activate())}}>{props.buttonName}</button>
             {
                 viewModal?
                 <Modal  />

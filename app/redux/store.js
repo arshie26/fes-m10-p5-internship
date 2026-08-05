@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit'
 import foryouSlice from './foryouSlice'
-import viewModalSlice from './viewModalSlice'
+import viewModalSlice from './features/viewModalSlice'
 
 export const store = configureStore({
     reducer: {

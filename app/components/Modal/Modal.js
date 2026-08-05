@@ -3,8 +3,8 @@ import './Modal.css'
 
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { viewModalSlice } from "@/app/redux/viewModalSlice";
-import { deactivate } from "@/app/redux/viewModalSlice"
+import { viewModalSlice } from "@/app/redux/features/viewModalSlice";
+import { deactivate } from "@/app/redux/features/viewModalSlice"
 
 function Modal(){
 
@@ -14,7 +14,7 @@ function Modal(){
     return (
         <>
             <div className="modal">
-                <button onClick={() => {dispatch(deactivate)}}>Close</button>
+                <button onClick={() => {dispatch(deactivate())}}>Close</button>
                 Registration
                 
                 <div>
