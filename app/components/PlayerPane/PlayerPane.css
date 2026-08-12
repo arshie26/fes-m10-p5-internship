@@ -1,0 +1,9 @@
+.pane__item{
+    padding: 20px 40px;
+}
+
+@media (max-width:768px) {
+    .pane__container{
+        display: none;
+    }
+}

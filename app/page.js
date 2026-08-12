@@ -3,27 +3,18 @@ import './style.css'
 import logo from './assets/logo.png'
 import landing from './assets/landing.png'
 import ModalButton from "./components/ModalButton/ModalButton";
-import { combineReducers, configureStore } from "@reduxjs/toolkit";
-import { viewModalSlice } from "./redux/features/viewModalSlice";
-import { store } from "./redux/store";
-import { Provider } from "react-redux";
 
 export default function Home() {
-
-  /*const rootReducer = combineReducers({
-    content: viewModalSlice.reducers
-  })
-  const reduxStore = configureStore();*/
 
   return (
     <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black relative">
       <nav class="nav">
         <div class="nav__wrapper">
           <figure class="nav__img--mask">
-            <img class="nav__img" src={logo} alt="logo" />
+            <img className="nav__img" src={logo} alt="logo" />
           </figure>
           <ul class="nav__list--wrapper">
-            <ModalButton buttonName={"Login"} />
+            <ModalButton nextPage={"/for-you"} buttonName={"Login"} classes={"nav__list--login"} />
             <li class="nav__list nav__list--mobile">About</li>
             <li class="nav__list nav__list--mobile">Contact</li>
             <li class="nav__list nav__list--mobile">Help</li>
@@ -47,7 +38,7 @@ export default function Home() {
                   <br class="remove--tablet" />
                   and even people who don’t like to read.
                 </div>
-                <button class="btn home__cta--btn">Login</button>
+                <ModalButton nextPage={"/for-you"} buttonName={"Login"} classes={"btn home__cta--btn"} />
               </div>
               <figure class="landing__image--mask">
                 <img src={landing} alt="landing" />
@@ -218,7 +209,7 @@ export default function Home() {
               </div>
             </div>
             <div class="reviews__btn--wrapper">
-              <button class="btn home__cta--btn">Login</button>
+              <ModalButton nextPage={"/for-you"} buttonName={"Login"} classes={"btn home__cta--btn"} />
             </div>
           </div>
         </div>

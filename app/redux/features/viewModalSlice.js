@@ -1,7 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-    viewModal: false
+    viewModal: false,
+    error: false,
+    email: "",
+    password: "",
+    registrationToggle: false,
 }
 
 export const viewModalSlice = createSlice({
@@ -19,9 +23,27 @@ export const viewModalSlice = createSlice({
         deactivate: (state) => {
             state.viewModal = false
         },
+        displayError: (state) => {
+            state.error = true
+        },
+        resolveError: (state) => {
+            state.error = false
+        },
+        setEmail: (state, action) => {
+            state.email = action.payload
+        },
+        setPassword: (state, action) => {
+            state.password = action.payload
+        },
+        toggleReg: (state) => {
+            state.registrationToggle = true
+        },
+        toggleLogin: (state) => {
+            state.registrationToggle = false
+        }
     },
 })
 
-export const { activate, deactivate } = viewModalSlice.actions
+export const { activate, deactivate, displayError, resolveError, setEmail, setPassword, toggleLogin, toggleReg } = viewModalSlice.actions
 
 export default viewModalSlice.reducer

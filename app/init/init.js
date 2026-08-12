@@ -11,19 +11,20 @@ import {getFirestore} from "firebase/firestore"
 
 const firebaseConfig = {
 
-  apiKey: "AIzaSyBchpRacU8cnFfnKC18GMtbgGEC5onsd-0",
+  apiKey: "AIzaSyCbG8YugLhYpwC6a-pD5RVr5XIZgyq9pP4",
 
-  authDomain: "nextjs-test-4d931.firebaseapp.com",
+  authDomain: "summarist-6bcb8.firebaseapp.com",
 
-  projectId: "nextjs-test-4d931",
+  projectId: "summarist-6bcb8",
 
-  storageBucket: "nextjs-test-4d931.firebasestorage.app",
+  storageBucket: "summarist-6bcb8.firebasestorage.app",
 
-  messagingSenderId: "469162043509",
+  messagingSenderId: "662995105769",
 
-  appId: "1:469162043509:web:3299db4ae899f772f9703c"
+  appId: "1:662995105769:web:be8afee0be81bf52f6fd78"
 
 };
+
 
 
 // Initialize Firebase
