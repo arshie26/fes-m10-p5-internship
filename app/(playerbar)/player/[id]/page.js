@@ -1,7 +1,8 @@
 "use client"
 import React, { useEffect, useState } from "react";
+import PlayerBar from '../../../components/PlayerBar/PlayerBar'
 
-function aboutBook({params}){
+function BookPlayer({params}){
     
     const {id} = React.use(params);
     const [book, setBook] = useState({});
@@ -30,7 +31,7 @@ function aboutBook({params}){
 
         <section>
             {Object.keys(book).length?
-                <div className="w-50/100 m-auto flex max-lg:flex-col-reverse max-lg:w-9/10 max-lg:items-center">
+                <div className="w-[800px] m-auto flex max-lg:flex-col-reverse max-lg:w-9/10 max-lg:items-center">
                     <div className="row w-90/100 mr-5">
                         <h1 className="font-bold mb-5 text-3xl max-sm:my-5 max-lg:text-2xl">{book?.title}</h1>
                         <hr className="mb-10" />
@@ -67,11 +68,10 @@ function aboutBook({params}){
                     </div>
                 </div>
             }
-            <div className="sticky z-2 bottom-0 bg-blue-400 w-full h-20">
-
-            </div>
+            <PlayerBar book={book} />
+            
         </section>
     )
 }
 
-export default aboutBook
+export default BookPlayer

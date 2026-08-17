@@ -4,7 +4,7 @@ import React from "react";
 import Modal from "../Modal/Modal";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { activate, displayError, resolveError } from "@/app/redux/features/viewModalSlice"
+import { activate, deactivate, displayError, resolveError } from "@/app/redux/features/viewModalSlice"
 import { setUser } from "@/app/redux/features/userSlice"
 import { useRouter } from "next/navigation";
 import { usePathname } from "next/navigation";
@@ -27,7 +27,12 @@ function ModalButton(props){
     function checkUser(){
 
         if(Object.keys(user).length > 0){
-            router.push(props.nextPage);
+            if(props.toggle === "Logout"){
+                dispatch(setUser({}));
+            }
+            else{
+                router.push(props.nextPage);
+            }
         }
         else{
             dispatch(activate());
@@ -38,6 +43,7 @@ function ModalButton(props){
     async function loginAsGuest(){
         dispatch(setUser({email: "guest@gmail.com", password: "guest123"}));
         router.push(props.nextPage);
+        dispatch(deactivate());
     }
 
     async function login(){
@@ -56,8 +62,8 @@ function ModalButton(props){
     }
 
     return (
-        <div>
-            <button className={props.classes} onClick={() => {console.log("Registering"); checkUser()}}>{props.buttonName}</button>
+        <>
+            <button className={props.classes}  onClick={() => {console.log("Registering"); checkUser()}}>{Object.keys(user).length > 0? props.toggle:props.buttonName}</button>
             {
                 viewModal?
                 <Modal login={login} loginAsGuest={loginAsGuest} />
@@ -65,7 +71,7 @@ function ModalButton(props){
                 <></>
             }
             
-        </div>
+        </>
     )
 
 

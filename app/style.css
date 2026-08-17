@@ -143,6 +143,19 @@ button:disabled {
   cursor: pointer;
 }
 
+
+
+/* MODAL BUTTON */
+
+.modal__button{
+  background-color: #032b41;
+  color: white;
+  padding: 2% 10%; 
+  margin-right: 3%;
+}
+
+
+
 /* LANDING */
 .landing__wrapper {
   display: flex;

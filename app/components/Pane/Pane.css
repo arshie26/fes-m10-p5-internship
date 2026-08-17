@@ -4,6 +4,15 @@
 
 @media (max-width:768px) {
     .pane__container{
-        display: none;
+        transform: translateX(-100%);
     }
+
+    .menu .pane__container{
+        display: flex;
+        width: 75%;
+        transform: translateX(0%);
+        transition: all ease 600ms;
+    }
+
+    
 }

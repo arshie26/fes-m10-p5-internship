@@ -1,4 +1,5 @@
 "use client"
+import ModalButton from "@/app/components/ModalButton/ModalButton";
 import React, { useEffect, useState } from "react";
 
 function aboutBook({params}){
@@ -25,9 +26,9 @@ function aboutBook({params}){
 
     return (
 
-        <section>
+        <section className="border-t-1 pt-10">
             {Object.keys(book).length?
-                <div className="w-50/100 m-auto flex max-lg:flex-col-reverse max-lg:w-9/10 max-lg:items-center">
+                <div className="w-55/100 m-auto flex max-lg:flex-col-reverse max-lg:w-9/10 max-lg:items-center">
                     <div className="row w-90/100 mr-5">
                         <h1 className="font-bold mb-5 text-3xl max-sm:my-5 max-lg:text-2xl">{book?.title}</h1>
                         <p className="font-bold mb-5">{book?.author}</p>
@@ -45,14 +46,14 @@ function aboutBook({params}){
                         </div>
                         <hr className="mb-6" />
                         <div className="mb-5">
-                            <button className="bg-[#032b41] text-white p-3 px-12 mr-3">Read</button>
-                            <button className="bg-[#032b41] text-white p-3 px-12 ml-3">Listen</button>
+                            <ModalButton buttonName="Read" nextPage={`/player/${id}`} classes="modal__button">Read</ModalButton>
+                            <ModalButton buttonName="Listen" nextPage={`/player/${id}`} classes="modal__button">Listen</ModalButton>
                         </div>
                         <p className="font-bold mb-4">What's it about?</p>
                         <div className="flex mb-4 font-bold max-sm:flex-col">
-                            {book?.tags?.map((tag) => {
+                            {book?.tags?.map((tag, index) => {
                                 return (
-                                    <p className="p-4 bg-gray-100 mx-3 max-lg:mb-4">{tag}</p>
+                                    <p key={index} className="p-4 bg-gray-100 mx-3 max-lg:mb-4">{tag}</p>
                                 )
                             })
                             }
