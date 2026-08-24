@@ -4,11 +4,11 @@ import React from "react";
 import Modal from "../Modal/Modal";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { activate, deactivate, displayError, resolveError } from "@/app/redux/features/viewModalSlice"
-import { setUser } from "@/app/redux/features/userSlice"
+import { activate, deactivate, displayError, resolveError } from "../../redux/features/viewModalSlice"
+import { setUser } from "../../redux/features/userSlice"
 import { useRouter } from "next/navigation";
 import { usePathname } from "next/navigation";
-import db from "@/app/init/init";
+import db from "../../init/init";
 import { collection, getDocs } from "firebase/firestore";
 
 function ModalButton(props){

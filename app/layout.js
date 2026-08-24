@@ -1,6 +1,8 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import './customize-progress-bar.css'
 import { Providers } from "./redux/provider";
+import { AudioPlayerProvider } from './redux/audio-player-context'
 
 import { config } from '@fortawesome/fontawesome-svg-core'
 import '@fortawesome/fontawesome-svg-core/styles.css'
@@ -31,7 +33,9 @@ export default function RootLayout({ children }) {
       </head>
       <body className="min-h-full flex flex-col relative">
         <Providers>
-          {children}
+          <AudioPlayerProvider>
+            {children}
+          </AudioPlayerProvider>
         </Providers>
       </body>
     </html>

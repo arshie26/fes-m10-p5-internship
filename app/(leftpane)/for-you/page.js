@@ -39,13 +39,13 @@ async function forYou(){
     return (
         <div>
             <section className="selected mb-20">
-                    
-                    <div className="m-auto 2xl:w-60/100 w-90/100">
+                <div className="row">
+                    <div className=" 2xl:w-90/100 w-90/100">
                         <h1 className="font-bold my-5">Selected just for you</h1>
                         <div>
                             <div>
                                 {selected.length > 0?
-                                    <div className="selected__box flex p-10 w-8/10 max-sm:w-full max-md:w-full bg-yellow-100">
+                                    <div className="selected__box flex p-6 w-8/10 max-sm:w-full max-md:w-full bg-yellow-100">
                                         <div className="w-50">
                                             <p>{selected[0].subTitle}</p>
                                         </div>
@@ -67,7 +67,7 @@ async function forYou(){
                             </div>
                         </div>
                     </div>
-                    
+                </div>
             </section>
             <section className="recommended mb-20">
                     <div className="row">

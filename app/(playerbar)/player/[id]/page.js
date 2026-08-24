@@ -1,6 +1,7 @@
 "use client"
 import React, { useEffect, useState } from "react";
 import PlayerBar from '../../../components/PlayerBar/PlayerBar'
+import AudioPlayer from '../../../components/AudioPlayer'
 
 function BookPlayer({params}){
     
@@ -36,11 +37,10 @@ function BookPlayer({params}){
                         <h1 className="font-bold mb-5 text-3xl max-sm:my-5 max-lg:text-2xl">{book?.title}</h1>
                         <hr className="mb-10" />
                         {
-                            summary.map((para) => {
-                                console.log(para);
+                            summary.map((para, index) => {
                                 return (
                                     <>
-                                        <p>{para}</p>
+                                        <p key={index}>{para}</p>
                                         <br/>
                                     </>
                                 )
@@ -68,8 +68,8 @@ function BookPlayer({params}){
                     </div>
                 </div>
             }
-            <PlayerBar book={book} />
             
+            <AudioPlayer track={book} />
         </section>
     )
 }

@@ -1,5 +1,5 @@
 "use client"
-import ModalButton from "@/app/components/ModalButton/ModalButton";
+import ModalButton from "../../../components/ModalButton/ModalButton";
 import React, { useEffect, useState } from "react";
 
 function aboutBook({params}){

@@ -3,8 +3,8 @@ import './Modal.css'
 
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { setEmail, setPassword, toggleReg, toggleLogin } from "@/app/redux/features/viewModalSlice";
-import { deactivate } from "@/app/redux/features/viewModalSlice"
+import { setEmail, setPassword, toggleReg, toggleLogin } from "../../redux/features/viewModalSlice";
+import { deactivate } from "../../redux/features/viewModalSlice"
 
 function Modal(props){
 
@@ -68,7 +68,7 @@ function Modal(props){
                     </div>
                 </div>
             }
-            <div className="backdrop"></div>
+            <div className="backdrop" onClick={() => {dispatch(deactivate())}}></div>
         </div>
     )
 }
