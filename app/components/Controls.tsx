@@ -91,11 +91,6 @@ useEffect(() => {
       setIsPlaying((prev) => !prev)
     };
   }
-  return () =>{
-    currentAudioRef.play();
-    currentAudioRef.pause();
-    setIsPlaying((prev) => !prev)
-  };
 }, [audioRef]);
 
 

@@ -53,7 +53,12 @@ function Modal(props){
                         :
                         <></>
                     }
-                    <button onClick={props.loginAsGuest}>Login as a Guest</button>
+                    <div>
+                        <button onClick={props.loginAsGuest}>Login as a Guest</button>
+                    </div>
+                    <div>
+                        <button onClick={props.googleLogin}>Login with Google</button>
+                    </div>
                     <div>
                         <input className="border w-9/10 rounded-md px-3 py-2 my-2" placeholder='Email Address' type="email" value={email} onChange={(event) => {getEmail(event)}} />
                     </div>
