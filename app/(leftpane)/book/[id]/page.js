@@ -1,11 +1,20 @@
 "use client"
 import ModalButton from "../../../components/ModalButton/ModalButton";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
+import { useAudioPlayerContext } from "../../../redux/audio-player-context";
 
 function aboutBook({params}){
     
     const {id} = React.use(params);
     const [book, setBook] = useState({});
+    const {
+        duration,
+        setDuration,
+        setCurrentTrack,
+        currentTrack
+      } = useAudioPlayerContext();
+    let audioRef;
+    
 
     async function getBook(){
 
@@ -13,6 +22,9 @@ function aboutBook({params}){
         let bookJSON = await bookRequest.json();
         console.log(bookJSON);
         setBook(bookJSON);
+        setCurrentTrack(bookJSON.audioLink);
+        audioRef = useRef<HTMLAudioElement>(bookJSON.audioLink)
+        console.log("Audio ref is ", audioRef.current);
     }
 
 
@@ -40,7 +52,7 @@ function aboutBook({params}){
                                 <p className="mb-4">{book?.type}</p>
                             </div>
                             <div className="flex font-bold">
-                                
+                                <p>{duration}</p>
                                 <p>{book?.keyIdeas} Key Ideas</p>
                             </div>
                         </div>

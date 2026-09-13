@@ -15,6 +15,7 @@ export const getCheckoutUrl = async (
 ): Promise<string> => {
   const auth = getAuth(app);
   const userId = auth.currentUser?.uid;
+  console.log(userId);
   if (!userId) throw new Error("User is not authenticated");
 
   const db = getFirestore(app);

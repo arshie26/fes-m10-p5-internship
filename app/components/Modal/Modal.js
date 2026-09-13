@@ -15,12 +15,12 @@ function Modal(props){
     const registrationToggle = useSelector(state => state.viewModal.registrationToggle)
 
     function getPassword(event){
-        console.log(event.target.value);
+        
         dispatch(setPassword(event.target.value))
     }
 
     function getEmail(event){
-        console.log(event.target.value);
+        
         dispatch(setEmail(event.target.value))
     }
 
@@ -38,7 +38,7 @@ function Modal(props){
                         <input className="border w-9/10 rounded-md px-3 py-2 my-2" placeholder='Password' type="text" value={password} onChange={(event) => {getPassword(event)}} />
                     </div>
                     
-                    <button className='btn py-6 mt-4 mb-8' onClick={() => {dispatch(toggleLogin())}}>Sign up</button>
+                    <button className='btn py-6 mt-4 mb-8' onClick={() => {props.register()}}>Sign up</button>
                     
                     <div className="bg-blue-100 p-3">
                         <button onClick={() => {dispatch(toggleLogin())}}>Already have an account?</button>

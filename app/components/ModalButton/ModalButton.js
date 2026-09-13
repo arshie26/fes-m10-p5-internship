@@ -1,6 +1,6 @@
 "use client"
 
-import React from "react";
+import React, { useEffect } from "react";
 import Modal from "../Modal/Modal";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
@@ -10,7 +10,7 @@ import { useRouter } from "next/navigation";
 import { usePathname } from "next/navigation";
 import db, { initFirebase } from "../../init/init";
 import { collection, getDocs } from "firebase/firestore";
-import { getAuth, GoogleAuthProvider, signInWithPopup } from 'firebase/auth'
+import { getAuth, GoogleAuthProvider, signInWithPopup, signInWithEmailAndPassword, createUserWithEmailAndPassword, onAuthStateChanged, signOut } from 'firebase/auth'
 
 function ModalButton(props){
 
@@ -24,6 +24,19 @@ function ModalButton(props){
     const app = initFirebase();
     const auth = getAuth(app);
     
+    useEffect(() => {
+        onAuthStateChanged(auth, (user) => {
+            console.log("App auth has changed", user);
+            if(user){
+              dispatch(setUser(user.email));
+              if(typeof(props.nextPage) === "string"){
+                if(props.nextPage === "/for-you"){
+                    completeRouting();
+                }
+              }
+            }
+        })
+    }, [])
 
     //click -> if logged in, direct to page. if not logged in, display modal
     //Login
@@ -33,10 +46,11 @@ function ModalButton(props){
 
         if(Object.keys(user).length > 0){
             if(props.toggle === "Logout"){
+                signOut(auth);
                 dispatch(setUser({}));
             }
             else{
-                router.push(props.nextPage);
+                completeRouting();
             }
         }
         else{
@@ -45,15 +59,22 @@ function ModalButton(props){
 
     }
 
+
+    function completeRouting(){
+        if(props.nextPage){
+            if(typeof(props.nextPage) === "string"){
+                router.push(props.nextPage);
+            }
+            else{
+                props.nextPage();
+            }
+        }
+    }
+
     async function loginAsGuest(){
         dispatch(setUser({email: "guest@gmail.com", password: "guest123"}));
         //router.push(props.nextPage);
-        if(typeof(props.nextPage) === "string"){
-            router.push(props.nextPage);
-        }
-        else{
-            props.nextPage();
-        }
+        completeRouting();
         dispatch(deactivate());
     }
 
@@ -67,12 +88,7 @@ function ModalButton(props){
             console.log("User found", user);
             dispatch(setUser({email: user.email}));
             dispatch(resolveError());
-            if(typeof(props.nextPage) === "string"){
-                router.push(props.nextPage);
-            }
-            else{
-                props.nextPage();
-            }
+            completeRouting();
             dispatch(deactivate());
         }
         else{
@@ -80,23 +96,29 @@ function ModalButton(props){
         }
     }
 
-    async function login(){
-        const data = await getDocs(collection(db, "users"));
-        const posts = data.docs.map((doc) => ({...doc.data(), id: doc.id}));
-        const userFound = posts.filter((user) => {console.log(user); return user.email === email && user.password === password});
-        if(userFound.length === 1){
-            console.log("User found");
-            dispatch(setUser(userFound[0]));
-            dispatch(resolveError());
-            //router.push(props.nextPage);
-            if(typeof(props.nextPage) === "string"){
-                router.push(props.nextPage);
+    async function register(){
+        try{
+            let { user } = await createUserWithEmailAndPassword(auth, email, password);
+            console.log("User sign up is now ", user);
+            if(user){
+                setUser({email: user.email})
+                dispatch(deactivate());
             }
-            else{
-                props.nextPage();
-            }
+        }catch(error){
+            console.log(error);
         }
-        else{
+    }
+
+    async function login(){
+        try{
+            let { user } = await signInWithEmailAndPassword(auth, email, password);
+            console.log("login user is now ", user);
+            dispatch(setUser({email: user.email}))
+            dispatch(deactivate());
+            completeRouting();
+        }
+        catch(error){
+            console.log("error is ", error);
             dispatch(displayError());
         }
     }
@@ -106,7 +128,7 @@ function ModalButton(props){
             <button className={props.classes}  onClick={() => {console.log("Registering"); checkUser()}}>{Object.keys(user).length > 0? props.toggle:props.buttonName}</button>
             {
                 viewModal?
-                <Modal login={login} googleLogin = {googleLogin} loginAsGuest={loginAsGuest} />
+                <Modal login={login} register={register} googleLogin = {googleLogin} loginAsGuest={loginAsGuest} />
                 :
                 <></>
             }

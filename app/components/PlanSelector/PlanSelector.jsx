@@ -12,7 +12,8 @@ function PlanSelector(){
 
     const [plan, setPlan] = useState("yearly")
     const app = initFirebase();
-    const auth = getAuth;
+    const router = useRouter();
+    const auth = getAuth(app);
     
     const buttonText = [{button: "Start your free 7-day trial", detail: "Cancel your trial at any time before it ends, and you won’t be charged."}, 
         {button: "Start your first month", detail: "30-day money back guarantee, no questions asked."}];
@@ -32,7 +33,7 @@ function PlanSelector(){
     }
 
     const upgrade = async () => {
-        const priceId = "price_1UD4E4ARYTsqMftisUQfiEkM"
+        const priceId = "price_1UEta6ARYTsqMftiQsZY0kF3"
         const checkoutUrl = await getCheckoutUrl(app, priceId);
         router.push(checkoutUrl);
 

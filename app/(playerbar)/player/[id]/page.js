@@ -45,10 +45,10 @@ function BookPlayer({params}){
                             {
                                 summary.map((para, index) => {
                                     return (
-                                        <>
-                                            <p key={index}>{para}</p>
+                                        <div key={index}>
+                                            <p >{para}</p>
                                             <br/>
-                                        </>
+                                        </div>
                                     )
                                 })
                             }
