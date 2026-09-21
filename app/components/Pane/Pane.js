@@ -4,6 +4,9 @@ import './Pane.css'
 import ModalButton from "../ModalButton/ModalButton";
 import Backdrop from "../Backdrop/Backdrop";
 import logo from '../../../public/logo.png'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faHouse, faBookmark } from '@fortawesome/free-solid-svg-icons'
+import { faMagnifyingGlass, faTimes } from "@fortawesome/free-solid-svg-icons";
 
 function Pane(){
 
@@ -15,8 +18,17 @@ function Pane(){
                         <div className="w-9/10 p-3" >
                             <img src="/logo.png" />
                         </div>
-                        <Link href="/for-you"><li className="pane__item hover:bg-gray-100 active:bg-gray-100">For you</li></Link>
-                        <li className="pane__item hover:bg-gray-100">My Library</li>
+                        <Link href="/for-you">
+                            <li className="pane__item hover:bg-gray-100 active:bg-gray-100">
+                                <FontAwesomeIcon icon={faHouse} className="mr-2" />
+                                For you
+                            </li>
+                        </Link>
+                        
+                        <li className="pane__item hover:bg-gray-100">
+                            <FontAwesomeIcon icon={faBookmark} className="mr-2" />
+                            My Library
+                        </li>
                         <li className="pane__item hover:bg-gray-100">Highlights</li>
                         <li className="pane__item hover:bg-gray-100">Search</li>
                     </ul>

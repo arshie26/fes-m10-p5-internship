@@ -40,13 +40,13 @@ function NavBar(){
     }
 
     return (
-        <div className="relative">
+        <div className="relative border-b-1 border-gray-300 mb-10">
 
-            <div className="flex justify-between w-55/100 m-auto max-lg:w-9/10 p-6">
+            <div className="flex justify-between w-full m-auto max-lg:w-9/10 p-4">
                 <div>
 
                 </div>
-                <div className="flex">
+                <div className="flex w-4/10">
                     <div className="w-full max-w-[340px] relative bg-gray-100">
                         <div>
                             <input type="text" placeholder="Search for books" className="border px-5 py-2 w-full" value={book} onChange={(event) => { return getBook(event)}} />

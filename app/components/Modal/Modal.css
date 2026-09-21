@@ -1,7 +1,6 @@
 .modal {
     border-radius: 4px;
     background-color: white;
-    padding: 16px;
     text-align: center;
     width: 360px;
     z-index: 1000;
@@ -44,4 +43,23 @@
     height: 100vh;
     top: 0;
     left: 0;
+  }
+
+  .closeButton{
+    position: absolute;
+    right: 10;
+    top: 15;
+  }
+
+  .google__login{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 4px;
+    background-color: #fff;
+    position: absolute;
+    left: 2px;
+    top: 2px;
   }

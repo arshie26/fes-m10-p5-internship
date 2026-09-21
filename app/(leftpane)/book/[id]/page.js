@@ -35,7 +35,7 @@ function aboutBook({params}){
 
     return (
 
-        <section className="border-t-1 pt-10">
+        <section>
             <audio
                 src={book?.audioLink}
                 preload="metadata"

@@ -36,7 +36,7 @@ const Settings = () => {
 
     return (
         
-        <section className="border-t-1 pt-10 border-gray-300">
+        
             <div className="w-55/100 m-auto flex flex-col max-lg:w-9/10">
                 <h1 className="text-3xl font-bold">Settings</h1>
                 <hr className="my-7 border-gray-300" />
@@ -74,7 +74,7 @@ const Settings = () => {
             
         }
         </div>
-        </section>
+        
     )
 }
 
