@@ -1,34 +1,31 @@
 "use client"
 import ModalButton from "../../../components/ModalButton/ModalButton";
 import React, { useEffect, useState, useRef } from "react";
-import { useAudioPlayerContext } from "../../../redux/audio-player-context";
 
 function aboutBook({params}){
     
     const {id} = React.use(params);
     const [book, setBook] = useState({});
-    const {
-        duration,
-        setDuration,
-        setCurrentTrack,
-        currentTrack
-      } = useAudioPlayerContext();
-    let audioRef;
-    
+    const [duration, setDuration] = useState(0);
 
     async function getBook(){
-
         let bookRequest = await fetch(`https://us-central1-summaristt.cloudfunctions.net/getBook?id=${id}`)
         let bookJSON = await bookRequest.json();
         console.log(bookJSON);
         setBook(bookJSON);
-        setCurrentTrack(bookJSON.audioLink);
-        audioRef = useRef<HTMLAudioElement>(bookJSON.audioLink)
-        console.log("Audio ref is ", audioRef.current);
     }
-
-
     
+    const formatTime = (time) => {
+        if (typeof time === 'number' && !isNaN(time)) {
+          const minutes = Math.floor(time / 60);
+          const seconds = Math.floor(time % 60);
+          // Convert to string and pad with leading zeros if necessary
+          const formatMinutes= minutes.toString().padStart(2, '0');
+          const formatSeconds= seconds.toString().padStart(2, '0');
+          return `${formatMinutes}:${formatSeconds}`;
+        }
+        return '00:00';
+    };
 
     useEffect(() => {
         getBook();
@@ -39,6 +36,12 @@ function aboutBook({params}){
     return (
 
         <section className="border-t-1 pt-10">
+            <audio
+                src={book?.audioLink}
+                preload="metadata"
+                onLoadedMetadata={(e) => {
+                    setDuration(formatTime(e.currentTarget.duration));}}
+            />
             {Object.keys(book).length?
                 <div className="w-55/100 m-auto flex max-lg:flex-col-reverse max-lg:w-9/10 max-lg:items-center">
                     <div className="row w-90/100 mr-5">
@@ -51,15 +54,15 @@ function aboutBook({params}){
                                 <p className="mb-4">{book?.averageRating} ({book?.totalRating}) ratings</p>
                                 <p className="mb-4">{book?.type}</p>
                             </div>
-                            <div className="flex font-bold">
-                                <p>{duration}</p>
-                                <p>{book?.keyIdeas} Key Ideas</p>
+                            <div className="font-bold mr-10">
+                                <p className="mb-4">{duration}</p>
+                                <p className="mb-4">{book?.keyIdeas} Key Ideas</p>
                             </div>
                         </div>
                         <hr className="mb-6" />
                         <div className="mb-5">
-                            <ModalButton buttonName="Read" nextPage={`/player/${id}`} classes="modal__button">Read</ModalButton>
-                            <ModalButton buttonName="Listen" nextPage={`/player/${id}`} classes="modal__button">Listen</ModalButton>
+                            <ModalButton buttonName="Read" nextPage={`/player/${id}`} toggle="Read" classes="modal__button">Read</ModalButton>
+                            <ModalButton buttonName="Listen" nextPage={`/player/${id}`} toggle="Listen" classes="modal__button">Listen</ModalButton>
                         </div>
                         <p className="font-bold mb-4">What's it about?</p>
                         <div className="flex mb-4 font-bold max-sm:flex-col">

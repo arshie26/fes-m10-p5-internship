@@ -21,7 +21,6 @@ function BookPlayer({params}){
         setBook(bookJSON);
         let rawSummary = bookJSON.summary.split("\n\n")
         setSummary(rawSummary);
-
     }
 
 

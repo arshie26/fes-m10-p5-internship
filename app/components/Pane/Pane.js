@@ -21,7 +21,7 @@ function Pane(){
                         <li className="pane__item hover:bg-gray-100">Search</li>
                     </ul>
                     <ul>
-                        <li className="pane__item hover:bg-gray-100">Settings</li>
+                        <Link href="/settings"><li className="pane__item hover:bg-gray-100">Settings</li></Link>
                         <li className="pane__item">Help & Support</li>
                         <li className="pane__item hover:bg-gray-100"><ModalButton className="pane__item" toggle="Logout" buttonName="Login" /></li>
                     </ul>

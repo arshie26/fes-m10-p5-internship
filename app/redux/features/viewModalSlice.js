@@ -6,6 +6,7 @@ const initialState = {
     email: "",
     password: "",
     registrationToggle: false,
+    resetToggle: false,
 }
 
 export const viewModalSlice = createSlice({
@@ -40,10 +41,16 @@ export const viewModalSlice = createSlice({
         },
         toggleLogin: (state) => {
             state.registrationToggle = false
-        }
+        },
+        showReset: (state) => {
+            state.resetToggle = true
+        },
+        hideReset: (state) => {
+            state.resetToggle = false
+        },
     },
 })
 
-export const { activate, deactivate, displayError, resolveError, setEmail, setPassword, toggleLogin, toggleReg } = viewModalSlice.actions
+export const { activate, deactivate, displayError, resolveError, setEmail, setPassword, toggleLogin, toggleReg, showReset, hideReset } = viewModalSlice.actions
 
 export default viewModalSlice.reducer
