@@ -11,6 +11,7 @@ import { usePathname } from "next/navigation";
 import db, { initFirebase } from "../../init/init";
 import { collection, getDocs } from "firebase/firestore";
 import { getAuth, GoogleAuthProvider, signInWithPopup, signInWithEmailAndPassword, createUserWithEmailAndPassword, onAuthStateChanged, signOut } from 'firebase/auth'
+import { getCheckoutUrl } from '../../redux/stripePayment'
 
 function ModalButton(props){
 
@@ -46,13 +47,26 @@ function ModalButton(props){
     }
 
 
+    async function upgrade (plan){
+        const priceId = [];
+        if(plan === "yearly"){
+            priceId.push("price_1UEta6ARYTsqMftiQsZY0kF3"); 
+        }
+        else if(plan === "monthly"){
+            priceId.push("price_1UEtaNARYTsqMftiVxH9AdjY");
+        }
+
+        const checkoutUrl = await getCheckoutUrl(app, priceId[0]);
+        router.push(checkoutUrl);
+    }
+
     function completeRouting(){
         if(props.nextPage){
-            if(typeof(props.nextPage) === "string"){
+            if(props.nextPage.includes("/")){
                 router.push(props.nextPage);
             }
             else{
-                props.nextPage();
+                upgrade(props.nextPage)
             }
         }
     }

@@ -70,7 +70,7 @@ function PlanSelector(){
             </div>
             
             <div className="flex flex-col items-center my-10">
-                <ModalButton nextPage={upgrade} buttonName={button} toggle={button} classes={"btn home__cta--btn"} />
+                <ModalButton nextPage={plan} buttonName={button} toggle={button} classes={"btn home__cta--btn"} />
                 <p className="text-xs my-5">{detail}</p>
             </div>
         </div>
