@@ -501,6 +501,29 @@ button:disabled {
   font-weight: 500;
 }
 
+
+.chooseplan__feature{
+  width: 50px;
+  height: 50px;
+}
+
+.plan__card--separator {
+  font-size: 14px;
+  color: #6b757b;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  max-width: 240px;
+  margin: 24px auto;
+}
+
+.plan__card--separator::after, .plan__card--separator::before {
+  content: "";
+  flex-grow: 1;
+  height: 1px;
+  background: #bac8ce;
+}
+
 @media (max-width: 768px) {
   .landing__content {
     display: flex;

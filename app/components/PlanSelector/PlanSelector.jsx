@@ -16,7 +16,7 @@ function PlanSelector(){
     const auth = getAuth(app);
     
     const buttonText = [{button: "Start your free 7-day trial", detail: "Cancel your trial at any time before it ends, and you won’t be charged."}, 
-        {button: "Start your first month", detail: "30-day money back guarantee, no questions asked."}];
+                        {button: "Start your first month", detail: "30-day money back guarantee, no questions asked."}];
     const [button, setButton] = useState(buttonText[0].button);
     const [detail, setDetail] = useState(buttonText[0].detail);
     
@@ -33,28 +33,34 @@ function PlanSelector(){
     }
 
     const upgrade = async () => {
-        const priceId = "price_1UEta6ARYTsqMftiQsZY0kF3"
-        const checkoutUrl = await getCheckoutUrl(app, priceId);
-        router.push(checkoutUrl);
+        const priceId = [];
+        if(plan === "yearly"){
+            priceId.push("price_1UEta6ARYTsqMftiQsZY0kF3"); 
+        }
+        else if(plan === "monthly"){
+            priceId.push("price_1UEtaNARYTsqMftiVxH9AdjY");
+        }
 
+        const checkoutUrl = await getCheckoutUrl(app, priceId[0]);
+        router.push(checkoutUrl);
     }
 
     return (
         <div>
-            <div className={plan === "yearly"? "border-2 border-black-200":"border-2 border-gray-200"} onClick={() => {selectPlan("yearly")}}>
-                <div className="flex p-5 bg-gray-200">
+            <div className={plan === "yearly"? "border-4 border-[#2be080] rounded-sm":"border-4 border-[#bac8ce] rounded-sm"} onClick={() => {selectPlan("yearly")}}>
+                <div className="flex p-5 bg-[#f1f6f4]">
                     <div>
-                        <p className="mb-2">Premium Plus Yearly</p>
-                        <p className="mb-2">$99.99/year</p>
+                        <p className="mb-2 font-bold">Premium Plus Yearly</p>
+                        <p className="mb-2 text-2xl font-bold">$99.99/year</p>
                         <p className="mb-2">7-day free trial included</p>
                     </div>
                 </div>
             </div>
-            <div>
-                <div>or</div>
+            <div className="plan__card--separator">
+                <div className="plan__separator">or</div>
             </div>
-            <div className={plan === "monthly"? "border-2 border-black-200":"border-2 border-gray-200"} onClick={() => {selectPlan("monthly")}}>
-                <div className="flex p-5 bg-gray-200">
+            <div className={plan === "monthly"? "border-4 border-[#2be080] rounded-sm":"border-4 border-[#bac8ce] rounded-sm"} onClick={() => {selectPlan("monthly")}}>
+                <div className="flex p-5 bg-[#f1f6f4]">
                     <div>
                         <p className="mb-2">Premium Plus Monthly</p>
                         <p className="mb-2">$9.99/month</p>
@@ -64,7 +70,7 @@ function PlanSelector(){
             </div>
             
             <div className="flex flex-col items-center my-10">
-                <ModalButton nextPage={upgrade} buttonName={button} classes={"btn home__cta--btn"} />
+                <ModalButton nextPage={upgrade} buttonName={button} toggle={button} classes={"btn home__cta--btn"} />
                 <p className="text-xs my-5">{detail}</p>
             </div>
         </div>

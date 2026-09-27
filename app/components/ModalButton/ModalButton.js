@@ -62,12 +62,6 @@ function ModalButton(props){
     return (
         <>
             <button className={props.classes}  onClick={() => {console.log("Registering"); checkUser()}}>{Object.keys(user).length > 0? props.toggle:props.buttonName}</button>
-            {/*
-                viewModal?
-                <Modal login={login} register={register} googleLogin = {googleLogin} loginAsGuest={loginAsGuest} />
-                :
-                <></>
-            */}
             
         </>
     )
