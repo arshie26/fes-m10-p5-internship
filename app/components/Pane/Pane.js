@@ -5,7 +5,7 @@ import ModalButton from "../ModalButton/ModalButton";
 import Backdrop from "../Backdrop/Backdrop";
 import logo from '../../../public/logo.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHouse, faBookmark } from '@fortawesome/free-solid-svg-icons'
+import { faHouse, faBookmark, faPenClip, faGear, faCircleQuestion, faRightFromBracket } from '@fortawesome/free-solid-svg-icons'
 import { faMagnifyingGlass, faTimes } from "@fortawesome/free-solid-svg-icons";
 
 function Pane(){
@@ -29,13 +29,28 @@ function Pane(){
                             <FontAwesomeIcon icon={faBookmark} className="mr-2" />
                             My Library
                         </li>
-                        <li className="pane__item hover:bg-gray-100">Highlights</li>
-                        <li className="pane__item hover:bg-gray-100">Search</li>
+                        <li className="pane__item hover:bg-gray-100">
+                            <FontAwesomeIcon icon={faPenClip} className="mr-2" />
+                            Highlights
+                        </li>
+                        <li className="pane__item hover:bg-gray-100">
+                            <FontAwesomeIcon icon={faMagnifyingGlass} className="mr-2" />
+                            Search
+                        </li>
                     </ul>
                     <ul>
-                        <Link href="/settings"><li className="pane__item hover:bg-gray-100">Settings</li></Link>
-                        <li className="pane__item">Help & Support</li>
-                        <li className="pane__item hover:bg-gray-100"><ModalButton className="pane__item" toggle="Logout" buttonName="Login" /></li>
+                        <Link href="/settings"><li className="pane__item hover:bg-gray-100">
+                            <FontAwesomeIcon icon={faGear} className="mr-2" />
+                            Settings
+                        </li></Link>
+                        <li className="pane__item">
+                            <FontAwesomeIcon icon={faCircleQuestion} className="mr-2" />
+                            Help & Support
+                        </li>
+                        <li className="pane__item hover:bg-gray-100">
+                            <FontAwesomeIcon icon={faRightFromBracket} className="mr-2" />
+                            <ModalButton className="pane__item" toggle="Logout" buttonName="Login" />
+                        </li>
                     </ul>
                 </div>
             </div>
