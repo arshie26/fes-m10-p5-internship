@@ -35,7 +35,7 @@ export default function RootLayout({ children }) {
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </head>
-      <body className="min-h-full flex flex-col relative">
+      <body className="min-h-full flex flex-col relative bg-white-100">
         <Providers>
           <AudioPlayerProvider>
             <Modal />

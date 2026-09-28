@@ -7,7 +7,10 @@ function PlayerPane(){
     return (
 
         <div className="pane__container fixed top-0 left-0 z-1 flex flex-col justify-between h-92/100">
-            <ul>
+            <ul className="w-[200px]">
+                <div className="w-9/10 p-3" >
+                    <img src="/logo.png" />
+                </div>
                 <Link href="/for-you"><li className="pane__item hover:bg-gray-100 active:bg-gray-100">For you</li></Link>
                 <li className="pane__item hover:bg-gray-100">My Library</li>
                 <li className="pane__item hover:bg-gray-100">Highlights</li>
