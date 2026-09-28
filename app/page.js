@@ -7,7 +7,7 @@ import ModalButton from "./components/ModalButton/ModalButton";
 export default function Home() {
 
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black relative">
+    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans relative">
       <nav className="nav">
         <div className="nav__wrapper">
           <figure className="nav__img--mask">
