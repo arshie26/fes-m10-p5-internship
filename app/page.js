@@ -11,7 +11,7 @@ export default function Home() {
       <nav class="nav">
         <div class="nav__wrapper">
           <figure class="nav__img--mask">
-            <img className="nav__img" src={logo} alt="logo" />
+            <img className="nav__img" src='./logo.png' alt="logo" />
           </figure>
           <ul class="nav__list--wrapper">
             <ModalButton nextPage={"/for-you"} buttonName={"Login"} classes={"nav__list--login"} />
@@ -41,7 +41,7 @@ export default function Home() {
                 <ModalButton nextPage={"/for-you"} buttonName={"Login"} classes={"btn home__cta--btn"} />
               </div>
               <figure class="landing__image--mask">
-                <img src={landing} alt="landing" />
+                <img src="./landing.png" alt="landing" />
               </figure>
             </div>
           </div>

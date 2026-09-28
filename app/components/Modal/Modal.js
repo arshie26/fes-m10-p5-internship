@@ -36,8 +36,6 @@ function Modal(props){
     useEffect(() => {
 
         onAuthStateChanged(auth, (user) => {
-            console.log("App auth has changed", user);
-            console.log("In Modal Next page is ", nextPage);
             if(user){
               dispatch(setUser(user.email));
               if(typeof(nextPage) === "string"){
@@ -155,10 +153,9 @@ function Modal(props){
                             </div>
                             
                             <button className='btn py-6 mt-4 mb-8' onClick={() => {register()}}>Sign up</button>
-                            
-                            <div className="bg-blue-100 p-3">
-                                <button onClick={() => {dispatch(hideReset());}}>Back to Login</button>
-                            </div>
+                        </div>
+                        <div className="bg-blue-100 p-3 w-full">
+                            <button onClick={() => {dispatch(hideReset());}}>Back to Login</button>
                         </div>
                     </>
                     :

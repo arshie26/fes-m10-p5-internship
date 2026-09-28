@@ -46,7 +46,7 @@ function NavBar(){
                 <div>
 
                 </div>
-                <div className="flex w-4/10">
+                <div className="flex min-lg:w-4/10">
                     <div className="w-full max-w-[340px] relative bg-gray-100">
                         <div>
                             <input type="text" placeholder="Search for books" className="border px-5 py-2 w-full" value={book} onChange={(event) => { return getBook(event)}} />
@@ -68,7 +68,7 @@ function NavBar(){
             </div>
             {
                 booksList.length > 0?
-                    <BookSearch books = {booksList} />
+                    <BookSearch setSearch={toggleSearch} books = {booksList} />
                     :
                     <></>
             }

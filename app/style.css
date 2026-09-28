@@ -45,6 +45,7 @@ button:disabled {
 .container {
   padding: 40px 0;
   width: 100%;
+  margin: 0 auto;
 }
 
 .btn {
@@ -133,6 +134,7 @@ button:disabled {
 /* NAVBAR */
 .nav {
   height: 80px;
+  width: 100%;
 }
 
 .nav__wrapper {
@@ -188,6 +190,11 @@ button:disabled {
 
 
 /* LANDING */
+
+#landing{
+  width: 100%;
+}
+
 .landing__wrapper {
   display: flex;
 }
@@ -419,6 +426,7 @@ button:disabled {
 
 #footer {
   background-color: rgb(241 246 244);
+  width: 100%;
 }
 
 .footer__top--wrapper {
@@ -522,6 +530,18 @@ button:disabled {
   flex-grow: 1;
   height: 1px;
   background: #bac8ce;
+}
+
+.book__search--link{
+  border-bottom: 1px #e1e7ea solid;
+}
+
+.book__search--link:hover{
+  background-color: #f1f6f4;
+}
+
+.book__search--link:last-child{
+  border-bottom: none;
 }
 
 @media (max-width: 768px) {

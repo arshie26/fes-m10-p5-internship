@@ -8,7 +8,7 @@
 }
 
 .pane__container{
-    background-color: lightgray;
+    background-color: #f7faf9;
 }
 
 @media (max-width:768px) {

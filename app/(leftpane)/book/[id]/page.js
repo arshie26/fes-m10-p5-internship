@@ -11,7 +11,6 @@ function aboutBook({params}){
     async function getBook(){
         let bookRequest = await fetch(`https://us-central1-summaristt.cloudfunctions.net/getBook?id=${id}`)
         let bookJSON = await bookRequest.json();
-        console.log(bookJSON);
         setBook(bookJSON);
     }
     
